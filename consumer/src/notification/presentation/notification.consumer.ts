@@ -17,8 +17,7 @@ export class NotificationConsumer {
   @EventPattern('notification.created')
   async handleNotification(
     @Payload() notification: NotificationTransportDto,
-    @Ctx() context: RmqContext,
   ) {
-    console.log(notification);
+    this.sendNotificationUseCase.execute(notification);
   }
 }
