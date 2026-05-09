@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 // import { RabbitmqModule } from './infrastructure/rabbitmq/rabbitmq.module';
-import { INOTIFICATION_QUEUE } from './domain/notification.queue';
+import { NOTIFICATION_QUEUE } from './domain/notification-queue';
 import { RabbitmqNotificationQueue } from './infrastructure/rabbitmq/rabbitmq.service';
 import { ClientProxy, ClientsModule, Transport } from '@nestjs/microservices';
 import { NotificationController } from './presentation/notification.controller';
@@ -28,7 +28,7 @@ console.log(process.env.RMQ_CONNECTION_STRING);
   providers: [
     PublishNotificationUseCase,
     {
-      provide: INOTIFICATION_QUEUE,
+      provide: NOTIFICATION_QUEUE,
       useFactory: (client: ClientProxy) => {
         return new RabbitmqNotificationQueue(client);
       },

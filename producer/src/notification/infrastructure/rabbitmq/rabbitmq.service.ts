@@ -1,7 +1,7 @@
 import { Inject, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { NotificationEvent } from '../../domain/notification-event.entity';
-import { INotificationQueue } from '../../domain/notification.queue';
+import { INotificationQueue } from '../../domain/notification-queue';
 import { lastValueFrom, retry, timer } from 'rxjs';
 
 @Injectable()

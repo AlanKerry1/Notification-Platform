@@ -4,4 +4,4 @@ export interface INotificationQueue {
     publish(notificationEvent: NotificationEvent): Promise<void>;
 }
 
-export const INOTIFICATION_QUEUE = Symbol('INOTIFICATION_QUEUE');
+export const NOTIFICATION_QUEUE = Symbol('NOTIFICATION_QUEUE');

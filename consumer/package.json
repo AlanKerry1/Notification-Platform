@@ -27,6 +27,7 @@
     "amqp-connection-manager": "^5.0.0",
     "amqplib": "^1.1.0",
     "dotenv": "^17.4.2",
+    "ioredis": "^5.10.1",
     "nestjs-telegraf": "^2.9.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
