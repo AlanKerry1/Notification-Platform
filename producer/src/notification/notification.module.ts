@@ -6,6 +6,8 @@ import { ClientProxy, ClientsModule, Transport } from '@nestjs/microservices';
 import { NotificationController } from './presentation/notification.controller';
 import { PublishNotificationUseCase } from './application/publish-notification.use-case';
 
+console.log(process.env.RMQ_CONNECTION_STRING);
+
 @Module({
   imports: [
     ClientsModule.register([
@@ -13,8 +15,8 @@ import { PublishNotificationUseCase } from './application/publish-notification.u
         name: 'NOTIFICATION_RMQ',
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://root:root@localhost:5672'],
-          queue: 'notifications_queue',
+          urls: [String(process.env.RMQ_CONNECTION_STRING)],
+          queue: process.env.RMQ_QUEUE_NAME,
           queueOptions: {
             durable: true,
           },

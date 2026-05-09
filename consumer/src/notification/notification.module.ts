@@ -8,7 +8,7 @@ import { TelegrafModule } from 'nestjs-telegraf';
 @Module({
   imports: [
     TelegrafModule.forRoot({
-      token: 'your-bot-token',
+      token: String(process.env.TELEGRAM_BOT_TOKEN),
     }),
   ],
   controllers: [NotificationConsumer],
