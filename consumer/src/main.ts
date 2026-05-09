@@ -14,6 +14,7 @@ async function bootstrap() {
       options: {
         urls: [String(process.env.RMQ_CONNECTION_STRING)],
         queue: String(process.env.RMQ_QUEUE_NAME),
+        noAck: false,
         queueOptions: {
           durable: true,
         },
