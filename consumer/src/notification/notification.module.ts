@@ -1,22 +1,22 @@
 import { Module } from '@nestjs/common';
 import { NotificationConsumer } from './presentation/notification.consumer';
 import { SendNotificationUseCase } from './application/send-notification.use-case';
-import { INOTIFICATION_SENDER, INotificationSender } from './domain/notification-sender';
-import { Notification } from './domain/notification.entity';
-
-class tempSender implements INotificationSender {
-    async send(notification: Notification): Promise<void> {
-        return new Promise(() => {});
-    }
-}
+import { INOTIFICATION_SENDER } from './domain/notification-sender';
+import { TelegramNotificationSender } from './infrastructure/telegram/telegram-notification-sender';
+import { TelegrafModule } from 'nestjs-telegraf';
 
 @Module({
-  imports: [],
+  imports: [
+    TelegrafModule.forRoot({
+      token: 'your-bot-token',
+    }),
+  ],
   controllers: [NotificationConsumer],
-  providers: [SendNotificationUseCase, 
+  providers: [
+    SendNotificationUseCase,
     {
       provide: INOTIFICATION_SENDER,
-      useClass: tempSender
+      useClass: TelegramNotificationSender,
     },
   ],
 })
