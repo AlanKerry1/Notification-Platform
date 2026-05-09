@@ -1,12 +1,12 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { INotificationQueue } from "../domain/notification.queue";
+import { INOTIFICATION_QUEUE, INotificationQueue } from "../domain/notification.queue";
 import { NotificationEvent } from "../domain/notification-event.entity";
 import { NotificationEventDto } from "./dto/notification-event.dto";
 
 @Injectable()
 export class PublishNotificationUseCase {
   constructor(
-    @Inject("INotificationQueue") private readonly queue: INotificationQueue,
+    @Inject(INOTIFICATION_QUEUE) private readonly queue: INotificationQueue,
   ) {}
 
   async execute(notificationEventDto: NotificationEventDto) {
