@@ -1,6 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { INotificationQueue } from "../domain/notification.queue";
 import { NotificationEvent } from "../domain/notification-event.entity";
+import { NotificationEventDto } from "./dto/notification-event.dto";
 
 @Injectable()
 export class PublishNotificationUseCase {
@@ -8,11 +9,11 @@ export class PublishNotificationUseCase {
     @Inject("INotificationQueue") private readonly queue: INotificationQueue,
   ) {}
 
-  async execute(dto: { chatId: string; message: string }) {
+  async execute(notificationEventDto: NotificationEventDto) {
     const event = new NotificationEvent(
       crypto.randomUUID(),
-      dto.chatId,
-      dto.message,
+      notificationEventDto.chatId,
+      notificationEventDto.message,
     );
 
     await this.queue.publish(event);
