@@ -10,13 +10,8 @@ export class NotificationController {
     ) {}
 
     @Post()
-    async publishNotification(@Body() notificationEventDto: NotificationEventDtoHttp, @Res() res: Response) {
-        try {
-            await this.publishNotificationUseCase.execute(notificationEventDto);
-            res.json({message: "Сообщение отправлено"})
-        } catch (e) {
-            console.log(e);
-            return res.status(500).send();
-        }
+    async publishNotification(@Body() notificationEventDto: NotificationEventDtoHttp) {
+        await this.publishNotificationUseCase.execute(notificationEventDto);
+        return {message: "Сообщение отправлено"};
     }
 }

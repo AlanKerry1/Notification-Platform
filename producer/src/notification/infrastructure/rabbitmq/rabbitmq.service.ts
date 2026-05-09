@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { NotificationEvent } from '../../domain/notification-event.entity';
 import { INotificationQueue } from '../../domain/notification.queue';
@@ -17,12 +17,18 @@ export class RabbitmqNotificationQueue implements INotificationQueue {
         retry({
           count: 3,
           delay: (error, retryCount) => {
-            console.log(`Попытка #${retryCount+1} через 3 сек...`);
+            console.log(`Попытка #${retryCount + 1} через 3 сек...`);
             return timer(3000);
           },
         }),
       );
 
-    await lastValueFrom(source$);
+    try {
+      await lastValueFrom(source$);
+    } catch (error) {
+      throw new InternalServerErrorException(
+        'Failed to publish notification event',
+      );
+    }
   }
 }
