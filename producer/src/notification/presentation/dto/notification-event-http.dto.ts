@@ -1,6 +1,16 @@
+import { IsNotEmpty, IsString } from "class-validator";
+
 export class NotificationEventDtoHttp {
-    constructor(
-        public readonly chatId: string,
-        public readonly message: string,
-    ) {}
+    constructor(chatId: string, message: string) {
+        this.chatId = chatId;
+        this.message = message;
+    }
+
+    @IsString()
+    @IsNotEmpty()
+    chatId: string;
+
+    @IsString()
+    @IsNotEmpty()
+    message: string;
 }
