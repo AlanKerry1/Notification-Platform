@@ -40,7 +40,7 @@ This application, consisting of two microservices communicating via RabbitMQ, al
 
 ```bash
 # Run from the project root
-copy .env.docker.example .env.docker
+cp .env.docker.example .env.docker
 ```
 ### You should set your env variables:
  - RABBITMQ_DEFAULT_USER
