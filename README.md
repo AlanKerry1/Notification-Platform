@@ -44,7 +44,7 @@ copy .env.docker.example .env.docker
 ```
 ### You should set your env variables:
  - RABBITMQ_DEFAULT_USER
- - RABBITMQ_DEFAULT_USER
+ - RABBITMQ_DEFAULT_PASS
  - RMQ_CONNECTION_STRING
  - TELEGRAM_BOT_TOKEN
 
