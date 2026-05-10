@@ -1,4 +1,4 @@
-
+``
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&height=180&color=0:de7300,100:540085&text=Notification%20Platform&fontAlign=50&fontAlignY=40&animation=twinkling&descAlign=50&descAlignY=58&fontColor=ffffff&fontSize=42&section=header&reversal=false" width="100%"/>
 </div>
@@ -53,7 +53,7 @@ cp .env.docker.example .env.docker
 docker-compose up -d
 ```
 
-> Once the container is running, you can open http://localhost:3000/api/docs/ in your browser and test it directly from the Swagger documentation page
+> Once the container is running, you can open http://localhost:3000/api/v1/docs/ in your browser and test it directly from the Swagger documentation page
 
 ---
  
