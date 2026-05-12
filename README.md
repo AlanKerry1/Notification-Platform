@@ -1,4 +1,3 @@
-``
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&height=180&color=0:de7300,100:540085&text=Notification%20Platform&fontAlign=50&fontAlignY=40&animation=twinkling&descAlign=50&descAlignY=58&fontColor=ffffff&fontSize=42&section=header&reversal=false" width="100%"/>
 </div>
